@@ -9,3 +9,9 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: inherit;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* Prevent date inputs from overflowing on mobile */
+input[type="date"] {
+  max-width: 100%;
+  min-width: 0;
+}

@@ -27,36 +27,36 @@ const DownloadCsv = () => {
     date.startDate.length === 10 && date.endDate.length === 10;
 
   return (
-    <div className="max-w-lg animate-fade-in pb-20 md:pb-0">
+    <div className="w-full max-w-lg min-w-0 animate-fade-in pb-20 md:pb-0">
       <h2 className="text-xl font-semibold text-gray-800 mb-5">Download Report</h2>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-        <div className="space-y-1.5 flex-1">
+      <div className="flex w-full min-w-0 flex-col gap-4 md:flex-row md:items-end">
+        <div className="min-w-0 w-full space-y-1.5 md:flex-1">
           <Label htmlFor="startDate">Start Date</Label>
           <input
             type="date"
             id="startDate"
             onChange={handleDateChange}
             value={date.startDate}
-            className="w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
+            className="block w-full min-w-0 max-w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
           />
         </div>
 
-        <div className="space-y-1.5 flex-1">
+        <div className="min-w-0 w-full space-y-1.5 md:flex-1">
           <Label htmlFor="endDate">End Date</Label>
           <input
             type="date"
             id="endDate"
             onChange={handleDateChange}
             value={date.endDate}
-            className="w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
+            className="block w-full min-w-0 max-w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
           />
         </div>
 
         <Button
           onClick={handleSubmit}
           disabled={!validateForm() || isLoading}
-          className="h-10 gap-2 sm:shrink-0"
+          className="h-10 w-full gap-2 md:w-auto md:shrink-0"
         >
           {isLoading ? (
             <Loader2 size={16} className="animate-spin" />
