@@ -66,11 +66,13 @@ const Login = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
 
         <div className="relative z-10 flex flex-col justify-between p-12 xl:p-16 w-full">
-          <img
-            src="/logo.jpg"
-            alt="Eugenics"
-            className="h-12 w-auto object-contain brightness-0 invert"
-          />
+          <div className="inline-flex rounded-md bg-white px-2 py-1 shadow-sm w-fit">
+            <img
+              src="/logo.jpg"
+              alt="Eugenics"
+              className="w-20 xl:w-24 h-auto object-contain"
+            />
+          </div>
 
           <div className="space-y-4 max-w-md">
             <p className="text-brand-red text-sm font-semibold tracking-widest uppercase">
@@ -100,7 +102,7 @@ const Login = () => {
             <img
               src="/logo.jpg"
               alt="Eugenics"
-              className="h-14 w-auto object-contain"
+              className="w-16 sm:w-20 h-auto object-contain"
             />
           </div>
 
