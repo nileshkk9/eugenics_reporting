@@ -1,7 +1,0 @@
-.regionalreport-formfield{
-    display: flex;
-    flex-direction: column;
-}
-.regionalreport-formfield > div{
-    margin: 5px;
-}

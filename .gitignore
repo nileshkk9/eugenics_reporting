@@ -1,2 +1,8 @@
 node_modules
 build
+.env
+.env.local
+.env.*
+dist
+.pnpm-store/
+.DS_Store
