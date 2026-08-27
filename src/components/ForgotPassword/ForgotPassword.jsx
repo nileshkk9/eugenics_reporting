@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "./ForgotPassword.css";
+import { Link } from "react-router-dom";
 import { api } from "../../Api/requests";
-import Spinner from "../Spinner/Spinner";
+import { Lock, Mail, Loader2 } from "lucide-react";
+import { Button } from "../ui/button";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -9,63 +10,60 @@ const ForgotPassword = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const handleClick = async(e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await api.sendRecoveryMail({email});
+    const res = await api.sendRecoveryMail({ email });
     if (res.status === 200) setSuccessMsg(res.data.message);
     else setErrorMsg(res.data.error);
     setIsLoading(false);
   };
 
   return (
-    <div>
-      <div className="body-login">
-        <div className="container-login">
-          <div className="header-login">
-            {/* <img className="lock" src={logo} alt="lock" /> */}
-            <i className="fas fa-lock fa-lg"></i>
-            <br />
-            FORGOT PASSWORD?
-            <p>You can reset your password here.</p>
+    <div className="bg-black min-h-dvh flex items-center justify-center px-4">
+      <form className="w-full max-w-sm animate-fade-in" onSubmit={handleClick}>
+        <div className="bg-stone-900/80 rounded-2xl shadow-2xl p-6 sm:p-8 text-white border border-stone-700/50">
+          <div className="flex flex-col items-center mb-6">
+            <Lock size={40} className="text-brand-blue mb-3" />
+            <h1 className="text-xl font-semibold tracking-widest uppercase">Forgot Password?</h1>
+            <p className="text-stone-400 text-sm mt-1">We'll send a reset link to your email.</p>
           </div>
-          <div className="tbox-login">
-            <i className="fas fa-user" />
+
+          <div className="flex items-center gap-3 bg-stone-800/60 rounded-lg px-4 h-12 border border-stone-700 focus-within:border-brand-blue transition-colors">
+            <Mail size={18} className="text-stone-400 shrink-0" />
             <input
               id="email"
-              type="text"
-              onChange={(e) => setEmail(e.target.value)}
+              type="email"
               placeholder="Enter your email address"
+              className="bg-transparent flex-1 outline-none text-sm placeholder:text-stone-500 text-white"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </div>
-          <button className="btn-login" type="submit" onClick={handleClick}>
-            Send
-          </button>
 
-          <div style={successMsg ? correctemail : wrongemail}>
-            {successMsg || errorMsg}
+          {(successMsg || errorMsg) && (
+            <p className={`text-sm text-center mt-3 ${successMsg ? "text-green-400" : "text-red-400"}`}>
+              {successMsg || errorMsg}
+            </p>
+          )}
+
+          <Button
+            type="submit"
+            className="w-full h-12 mt-5 text-base font-semibold"
+            disabled={!email || isLoading}
+          >
+            {isLoading ? <Loader2 size={20} className="animate-spin" /> : "Send Reset Link"}
+          </Button>
+
+          <div className="mt-4 text-center">
+            <Link to="/" className="text-stone-400 hover:text-brand-blue text-sm transition-colors">
+              ← Back to Login
+            </Link>
           </div>
-          {/* <div style={wrongemail}>
-            <b>{errorMsg}</b>
-          </div> */}
-          <a href="google.com" className="l2-login" to="/">
-            CREATE NEW ACCOUNT
-          </a>
-          {isLoading ? <Spinner /> : null}
         </div>
-      </div>
+      </form>
     </div>
   );
 };
 
-const correctemail = {
-  display: "block",
-  width: "260px",
-  padding: "5px 0",
-  color: "green",
-  textAlign: "center",
-  margin: "0px auto",
-  transition: "0.5s all",
-};
-const wrongemail = { ...correctemail, color: "red" };
 export default ForgotPassword;

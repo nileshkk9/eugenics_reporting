@@ -16,12 +16,21 @@ const eugenics = () =>
     headers: { Authorization: getAuthTokenFromLocal() },
   });
 
-api.registerUser = async (data) => {
+api.inviteUser = async (data) => {
   try {
-    const res = await eugenics().post("/user/register", data);
+    const res = await eugenics().post("/user/invite", data);
     return await res;
   } catch (error) {
-    return error;
+    return error.response;
+  }
+};
+
+api.registerViaToken = async (token, data) => {
+  try {
+    const res = await eugenics().post(`/user/register/${token}`, data);
+    return await res;
+  } catch (error) {
+    return error.response;
   }
 };
 
@@ -152,12 +161,8 @@ api.getEntries = async (data) => {
 
 api.getGeoLocation = async (latitude, longitude) => {
   const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
-  try {
-    const res = await axios.get(url);
-    return await res;
-  } catch (error) {
-    return error;
-  }
+  const res = await axios.get(url, { timeout: 10000 });
+  return res;
 };
 
 export { api };

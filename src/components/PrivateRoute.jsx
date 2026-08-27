@@ -1,16 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import auth from "./auth";
+import { LOCAL_AUTH_KEY } from "../utils/constants";
 
-const PrivateRoute = (props) => {
-
-  return auth.isAuthenticated() ? <Outlet /> : <Navigate
-    to={{
-      pathname: "/",
-      state: {
-        from: props.location
-      }
-    }}
-  />
+const PrivateRoute = () => {
+  return localStorage.getItem(LOCAL_AUTH_KEY) ? <Outlet /> : <Navigate to="/" replace />;
 };
+
 export default PrivateRoute;
