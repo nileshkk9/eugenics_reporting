@@ -71,7 +71,7 @@ const Main = () => {
       {/* Main content */}
       <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${!isMobile ? "md:ml-[250px]" : ""}`}>
         <Navbar toggleSideNav={handleSidebar} />
-        <main className="flex-1 p-4 sm:p-6 pb-24 md:pb-6 animate-fade-in">
+        <main className="flex-1 overflow-x-hidden p-4 sm:p-6 pb-24 md:pb-6 animate-fade-in">
           <Outlet context={{ location }} />
         </main>
       </div>

@@ -5,6 +5,12 @@ import { Download, Loader2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 
+const dateInputClassName =
+  "block w-full h-10 border-0 bg-transparent px-3 text-sm outline-none appearance-none";
+
+const dateFieldClassName =
+  "overflow-hidden rounded-md border border-gray-300 bg-white focus-within:border-brand-blue focus-within:ring-1 focus-within:ring-brand-blue";
+
 const DownloadCsv = () => {
   const [date, setDate] = useState({ startDate: "", endDate: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -27,30 +33,34 @@ const DownloadCsv = () => {
     date.startDate.length === 10 && date.endDate.length === 10;
 
   return (
-    <div className="w-full max-w-lg min-w-0 animate-fade-in pb-20 md:pb-0">
+    <div className="mx-auto w-full max-w-lg box-border pb-20 md:pb-0">
       <h2 className="text-xl font-semibold text-gray-800 mb-5">Download Report</h2>
 
-      <div className="flex w-full min-w-0 flex-col gap-4 md:flex-row md:items-end">
-        <div className="min-w-0 w-full space-y-1.5 md:flex-1">
+      <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm space-y-4 md:space-y-0 md:flex md:items-end md:gap-4">
+        <div className="space-y-1.5 md:flex-1 md:min-w-0">
           <Label htmlFor="startDate">Start Date</Label>
-          <input
-            type="date"
-            id="startDate"
-            onChange={handleDateChange}
-            value={date.startDate}
-            className="block w-full min-w-0 max-w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
-          />
+          <div className={dateFieldClassName}>
+            <input
+              type="date"
+              id="startDate"
+              onChange={handleDateChange}
+              value={date.startDate}
+              className={dateInputClassName}
+            />
+          </div>
         </div>
 
-        <div className="min-w-0 w-full space-y-1.5 md:flex-1">
+        <div className="space-y-1.5 md:flex-1 md:min-w-0">
           <Label htmlFor="endDate">End Date</Label>
-          <input
-            type="date"
-            id="endDate"
-            onChange={handleDateChange}
-            value={date.endDate}
-            className="block w-full min-w-0 max-w-full h-10 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue focus:border-brand-blue bg-white"
-          />
+          <div className={dateFieldClassName}>
+            <input
+              type="date"
+              id="endDate"
+              onChange={handleDateChange}
+              value={date.endDate}
+              className={dateInputClassName}
+            />
+          </div>
         </div>
 
         <Button
