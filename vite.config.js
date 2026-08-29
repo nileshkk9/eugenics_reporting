@@ -25,7 +25,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/eugenics-backend-nileshkk9\.vercel\.app\//,
+            urlPattern: /^https:\/\/eugenics-backend\.vercel\.app\//,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',
