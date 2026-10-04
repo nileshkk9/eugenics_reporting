@@ -6,6 +6,7 @@ import { Loader2, CheckCircle, AlertCircle, Save } from "lucide-react";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { Combobox } from "../ui/combobox";
 import { Alert, AlertDescription } from "../ui/alert";
 
 const emptyForm = {
@@ -134,18 +135,17 @@ const ManageUsers = () => {
       <div className="space-y-4">
         <div className="space-y-1.5">
           <Label>User</Label>
-          <Select value={selectedId} onValueChange={handleSelect} disabled={isLoadingList}>
-            <SelectTrigger className="h-10">
-              <SelectValue placeholder={isLoadingList ? "Loading..." : "Select a user"} />
-            </SelectTrigger>
-            <SelectContent>
-              {users.map((user) => (
-                <SelectItem value={String(user.id)} key={user.id}>
-                  {user.name} ({user.username})
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <Combobox
+            allowCustom={false}
+            disabled={isLoadingList}
+            value={selectedId}
+            onChange={handleSelect}
+            placeholder={isLoadingList ? "Loading..." : "Search users"}
+            options={users.map((user) => ({
+              value: String(user.id),
+              label: `${user.name} (${user.username})`,
+            }))}
+          />
         </div>
 
         {isLoadingUser && (
