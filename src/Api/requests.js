@@ -150,6 +150,24 @@ api.getRegionalUsers = async () => {
   }
 };
 
+api.getUserById = async (id) => {
+  try {
+    const res = await eugenics().get(`/user/${id}`);
+    return await res;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+api.updateUser = async (id, data) => {
+  try {
+    const res = await eugenics().patch(`/user/${id}`, data);
+    return await res;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 api.getEntries = async (data) => {
   try {
     const res = await eugenics().post(`/regional-report`, data);

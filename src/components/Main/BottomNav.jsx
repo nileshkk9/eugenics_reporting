@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Upload, FileText, Download, BarChart3, UserPlus } from "lucide-react";
+import { Upload, FileText, Download, BarChart3, UserPlus, Users } from "lucide-react";
 import { LEVEL } from "../../utils/constants";
 import { cn } from "../../lib/utils";
 
@@ -18,7 +18,10 @@ const BottomNav = ({ user }) => {
       ? [{ to: "/main/regional-report", label: "Regional", Icon: BarChart3, id: "regional-report" }]
       : []),
     ...(isAdmin
-      ? [{ to: "/main/invite-user", label: "Invite", Icon: UserPlus, id: "invite-user" }]
+      ? [
+          { to: "/main/invite-user", label: "Invite", Icon: UserPlus, id: "invite-user" },
+          { to: "/main/manage-users", label: "Users", Icon: Users, id: "manage-users" },
+        ]
       : []),
   ];
 

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { LEVEL } from "../../utils/constants";
-import { Upload, FileText, Download, BarChart3, MapPin, UserPlus, ExternalLink } from "lucide-react";
+import { Upload, FileText, Download, BarChart3, MapPin, UserPlus, Users, ExternalLink } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 const NAV_LINKS = [
@@ -22,7 +22,10 @@ const Sidenav = ({ isOpen, isMobile, currentLocation, onClose, user }) => {
       ? [{ to: "regional-report", label: "Regional Report", Icon: BarChart3, id: "regional-report" }]
       : []),
     ...(isAdmin
-      ? [{ to: "invite-user", label: "Invite User", Icon: UserPlus, id: "invite-user" }]
+      ? [
+          { to: "invite-user", label: "Invite User", Icon: UserPlus, id: "invite-user" },
+          { to: "manage-users", label: "Manage Users", Icon: Users, id: "manage-users" },
+        ]
       : []),
   ];
 

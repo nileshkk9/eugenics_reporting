@@ -1,5 +1,5 @@
 import { api } from "../../Api/requests";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../auth";
 import { useEffect, useState } from "react";
 import { LOCAL_AUTH_KEY } from "../../utils/constants";
@@ -12,6 +12,8 @@ const Login = () => {
   const [token, setToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const infoMsg = location.state?.message;
 
   useEffect(() => {
     if (localStorage.getItem(LOCAL_AUTH_KEY)) {
@@ -170,6 +172,15 @@ const Login = () => {
                 </div>
               </div>
             </div>
+
+            {infoMsg && (
+              <div
+                role="status"
+                className="mt-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 text-center"
+              >
+                {infoMsg}
+              </div>
+            )}
 
             {errMsg && (
               <div

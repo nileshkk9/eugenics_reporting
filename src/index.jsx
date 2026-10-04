@@ -14,6 +14,7 @@ import ChangePassword from "./components/ChangePassword/ChangePassword";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Register from "./components/Register/Register";
 import InviteUser from "./components/InviteUser/InviteUser";
+import ManageUsers from "./components/ManageUsers/ManageUsers";
 import TakeInput from "./components/Main/TakeInput";
 import ViewReport from "./components/ViewReport/ViewReport";
 import DownloadCsv from "./components/DownloadCSV/DownloadCsv";
@@ -31,6 +32,7 @@ const routing = (
           <Route path="download" element={<DownloadCsv />} />
           <Route path="regional-report" element={<RegionalReport />} />
           <Route path="invite-user" element={<InviteUser />} />
+          <Route path="manage-users" element={<ManageUsers />} />
         </Route>
       </Route>
 

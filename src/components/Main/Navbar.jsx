@@ -9,6 +9,7 @@ const PAGE_TITLES = {
   download: "Download Report",
   "regional-report": "Regional Report",
   "invite-user": "Invite User",
+  "manage-users": "Manage Users",
 };
 
 const Navbar = ({ toggleSideNav }) => {
